@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LB Laboratório de Prótese | Precisão e Estética</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+  <style>
+    @font-face {
+      font-family: 'Lemon Milk';
+      src: url('LEMONMILK-Regular.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root{
+      --primary:#0b3c8c;
+      --secondary:#1f7ae0;
+      --accent:#4fd1c5;
+      --dark:#0a1a33;
+      --light:#f4f7fb;
+      --text:#2e2e2e;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:linear-gradient(180deg,#eef3fb 0%,#ffffff 40%,#eef3fb 100%);
+      color:var(--text);
+    }
+
+    h1,h2,h3,h4{
+      font-family:'Lemon Milk','Playfair Display',serif;
+      letter-spacing:1px;
+    }
+
+    /* NAVBAR */
+    .navbar{
+      background:linear-gradient(90deg,var(--primary),var(--dark));
+      padding:1rem 0;
+    }
+
+    .navbar-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-weight:700;
+      letter-spacing:1px;
+    }
+
+    .navbar-brand img{
+      height:56px;
+    }
+
+    .nav-link{
+      color:#fff !important;
+      font-weight:600;
+      margin-left:1rem;
+      position:relative;
+    }
+
+    .nav-link::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-4px;
+      width:0;
+      height:2px;
+      background:var(--accent);
+      transition:.3s;
+    }
+
+    .nav-link:hover::after{width:100%;}
+
+    /* HERO */
+    .hero{
+      min-height:90vh;
+      background:
+        radial-gradient(circle at top,rgba(255,255,255,.25),transparent 60%),
+        linear-gradient(135deg,var(--primary),var(--secondary));
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      position:relative;
+      padding-top:120px;
+    }
+
+    .hero-content{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:2rem;
+    }
+
+    .hero-logo{
+      width:250px;
+      height:250px;
+      animation:floatLogo 3s ease-in-out infinite;
+    }
+
+    @keyframes floatLogo{
+      0%, 100%{transform:translateY(0)}
+      50%{transform:translateY(-15px)}
+    }
+
+    .hero h1{
+      font-size:clamp(2.5rem,6vw,4rem);
+      margin-bottom:1rem;
+    }
+
+    .hero p{
+      max-width:620px;
+      margin:0 auto 2rem;
+      font-size:1.15rem;
+      opacity:.95;
+    }
+
+    .btn-whatsapp{
+      background:linear-gradient(135deg,#25d366,#128c4d);
+      border:none;
+      color:#fff;
+      padding:14px 36px;
+      border-radius:50px;
+      font-weight:700;
+      box-shadow:0 10px 30px rgba(37,211,102,.45);
+    }
+
+    .btn-whatsapp:hover{transform:translateY(-3px)}
+
+    /* SECTION */
+    section{padding:90px 0}
+
+    .section-title{
+      text-align:center;
+      margin-bottom:4rem;
+    }
+
+    .section-title h2{
+      color:var(--primary);
+      font-size:2.4rem;
+      text-transform:uppercase;
+    }
+
+    .section-title span{
+      display:block;
+      width:80px;
+      height:4px;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+      margin:1rem auto 0;
+      border-radius:4px;
+    }
+
+    /* PRICE CARD */
+    .price-card{
+      background:#ffffff;
+      border-radius:26px;
+      overflow:hidden;
+      box-shadow:0 20px 50px rgba(11,60,140,.15);
+      transition:.4s;
+      border:1px solid rgba(11,60,140,.08);
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+
+    .price-card:hover{transform:translateY(-10px)}
+
+    .price-header{
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      color:#fff;
+      padding:26px;
+      text-align:center;
+      font-weight:700;
+      font-family:'Lemon Milk',sans-serif;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      flex-shrink:0;
+    }
+
+    .list-group-flush{
+      display:flex;
+      flex-direction:column;
+      flex-grow:1;
+    }
+
+    .list-group-item{
+      border:0;
+      padding:14px 20px;
+      display:flex;
+      flex-direction:row;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      font-weight:500;
+      background:transparent;
+      border-bottom:1px solid rgba(11,60,140,.06);
+      min-height:auto;
+    }
+
+    .list-group-item:last-child{
+      border-bottom:none;
+    }
+
+    .list-group-item span:first-child{
+      color:#555;
+      font-size:0.95rem;
+      line-height:1.4;
+      flex:1;
+      text-align:left;
+    }
+
+    .price{
+      color:var(--primary);
+      font-weight:700;
+      font-size:1rem;
+      white-space:nowrap;
+    }
+
+    /* TEAM */
+    .team-card{
+      background:#fff;
+      border-radius:22px;
+      padding:40px 30px;
+      box-shadow:0 15px 40px rgba(0,0,0,.08);
+      transition:.4s;
+    }
+
+    .team-card:hover{transform:translateY(-8px)}
+
+    .team-card h5{color:var(--primary)}
+
+    /* FOOTER */
+    footer{
+      background:linear-gradient(135deg,#0b1222,#060b16);
+      color:#fff;
+      padding:80px 0 40px;
+      text-align:center;
+      border-top:3px solid var(--accent);
+    }
+
+    footer h4{
+      color:#fff;
+      font-size:1.8rem;
+      margin-bottom:1.5rem;
+      letter-spacing:1px;
+    }
+
+    footer p{
+      margin:0.8rem 0;
+      font-size:1rem;
+      opacity:0.95;
+      color:#fff;
+    }
+
+    footer i{
+      color:var(--accent);
+      margin-right:8px;
+      font-size:1.2rem;
+    }
+
+    footer p:last-child{
+      color:#fff;
+      font-weight:600;
+      font-style:italic;
+      margin-top:2rem;
+      padding-top:1.5rem;
+      border-top:1px solid rgba(255,255,255,.2);
+    }
+
+    .contact-info{
+      margin-top:3rem;
+      padding-top:2.5rem;
+      border-top:2px solid rgba(255,255,255,.2);
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:3rem;
+    }
+
+    .contact-person{
+      text-align:center;
+    }
+
+    .contact-person h5{
+      color:#fff;
+      font-size:1.2rem;
+      margin-bottom:0.8rem;
+      font-weight:700;
+      letter-spacing:0.5px;
+    }
+
+    .contact-person p{
+      margin:0.8rem 0;
+      font-size:0.95rem;
+      color:#fff;
+    }
+
+    .cro{
+      color:#fff;
+      font-size:0.9rem;
+      opacity:0.9;
+    }
+
+    .phone{
+      font-weight:700;
+      color:#fff;
+      margin-top:1rem;
+      padding-top:1rem;
+      border-top:1px solid rgba(255,255,255,.15);
+    }
+
+    .phone a{
+      color:#fff;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      transition:all .3s;
+    }
+
+    .phone a:hover{
+      color:#25d366;
+      transform:translateY(-2px);
+    }
+
+    .phone i{
+      color:#25d366;
+      margin:0;
+      font-size:1.4rem;
+    }
+
+    /* CONTACT CARDS SECTION */
+    .contact-section{
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      padding:70px 0;
+      margin:60px 0;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .contact-section::before{
+      content:'';
+      position:absolute;
+      top:-50%;
+      right:-10%;
+      width:500px;
+      height:500px;
+      background:radial-gradient(circle,rgba(79,209,197,.15),transparent 70%);
+      border-radius:50%;
+      pointer-events:none;
+    }
+
+    .contact-section::after{
+      content:'';
+      position:absolute;
+      bottom:-30%;
+      left:-5%;
+      width:400px;
+      height:400px;
+      background:radial-gradient(circle,rgba(31,122,224,.1),transparent 70%);
+      border-radius:50%;
+      pointer-events:none;
+    }
+
+    .contact-section-title{
+      text-align:center;
+      margin-bottom:3.5rem;
+      position:relative;
+      z-index:1;
+    }
+
+    .contact-section-title h3{
+      color:#fff;
+      font-size:2rem;
+      margin-bottom:0.8rem;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    .contact-section-title p{
+      color:rgba(255,255,255,.9);
+      font-size:1rem;
+      max-width:500px;
+      margin:0 auto;
+    }
+
+    .contact-cards-container{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:2.5rem;
+      max-width:900px;
+      margin:0 auto;
+      position:relative;
+      z-index:1;
+    }
+
+    .contact-card{
+      background:#fff;
+      border-radius:20px;
+      padding:40px;
+      text-align:center;
+      box-shadow:0 15px 40px rgba(11,60,140,.1);
+      transition:.4s;
+      border:2px solid transparent;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .contact-card::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:4px;
+      background:linear-gradient(90deg,var(--primary),var(--accent));
+    }
+
+    .contact-card:hover{
+      transform:translateY(-8px);
+      border-color:var(--primary);
+      box-shadow:0 25px 60px rgba(11,60,140,.2);
+    }
+
+    .contact-card-icon{
+      width:70px;
+      height:70px;
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto 1.5rem;
+      font-size:2rem;
+      color:#fff;
+    }
+
+    .contact-card h6{
+      color:var(--primary);
+      font-size:1.3rem;
+      margin-bottom:0.5rem;
+      font-weight:700;
+      letter-spacing:0.5px;
+      text-transform:uppercase;
+    }
+
+    .contact-card .professional-role{
+      color:#888;
+      font-size:0.9rem;
+      margin-bottom:1.5rem;
+      font-style:italic;
+    }
+
+    .contact-card .cro-badge{
+      display:inline-block;
+      background:linear-gradient(135deg,rgba(11,60,140,.08),rgba(31,122,224,.08));
+      color:var(--primary);
+      padding:8px 16px;
+      border-radius:25px;
+      font-size:0.85rem;
+      margin-bottom:1.8rem;
+      font-weight:600;
+      border:1px solid rgba(11,60,140,.1);
+    }
+
+    .contact-card .divider{
+      height:1px;
+      background:linear-gradient(90deg,transparent,rgba(11,60,140,.2),transparent);
+      margin:1.5rem 0;
+    }
+
+    .contact-card a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 28px;
+      background:linear-gradient(135deg,#25d366,#128c4d);
+      color:#fff;
+      text-decoration:none;
+      border-radius:50px;
+      font-weight:700;
+      font-size:0.95rem;
+      transition:.3s;
+      margin-top:0.5rem;
+      box-shadow:0 8px 20px rgba(37,211,102,.3);
+    }
+
+    .contact-card a:hover{
+      transform:translateY(-4px);
+      box-shadow:0 15px 35px rgba(37,211,102,.5);
+    }
+
+    .contact-card a i{
+      font-size:1.3rem;
+    }
+
+    .contact-info-extra{
+      margin-top:1.2rem;
+      padding-top:1.2rem;
+      border-top:1px solid rgba(11,60,140,.1);
+      font-size:0.85rem;
+      color:#777;
+    }
+
+    @media(max-width:768px){
+      .contact-cards-container{
+        grid-template-columns:1fr;
+        gap:2rem;
+      }
+      .contact-section{
+        padding:50px 0;
+        margin:40px 0;
+      }
+      .contact-section-title h3{
+        font-size:1.6rem;
+      }
+      .contact-card{
+        padding:30px;
+      }
+    }
+
+    /* FLOATING WHATSAPP */
+    .floating{
+      position:fixed;
+      right:28px;
+      bottom:28px;
+      width:62px;
+      height:62px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#25d366,#128c4d);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 12px 30px rgba(37,211,102,.5);
+      z-index:999;
+    }
+
+    .floating i{font-size:1.8rem;color:#fff}
+
+    @media(max-width:768px){
+      .hero{min-height:70vh}
+      section{padding:60px 0}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="img/lb.png" alt="LB Logo" />
+      LB LABORATÓRIO
+    </a>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <img src="img/lb.png" alt="LB Logo" class="hero-logo" />
+      <h1>Precisão & Estética Odontológica</h1>
+      <p>Soluções de alto padrão em cerâmica, zircônia, resina e próteses acrílicas.</p>
+      <a href="https://wa.me/553491507902" class="btn btn-whatsapp btn-lg"><i class="bi bi-whatsapp"></i> Solicitar orçamento</a>
+    </div>
+  </div>
+</header>
+
+<section id="servicos" class="container">
+  <div class="section-title">
+    <h2>Catálogo de Serviços</h2>
+    <span></span>
+  </div>
+
+  <div class="row g-4">
+
+    <!-- CERÂMICA PURA -->
+    <div class="col-md-6 col-lg-4">
+      <div class="price-card">
+        <div class="price-header">Cerâmica Pura</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <span>Coroa total cerâmica pura (Emax) injetada</span>
+            <span class="price">R$ 450,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Coroa total cerâmica pura (Emax) fresada</span>
+            <span class="price">R$ 500,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Coroa onlay/inlay cerâmica pura (Emax)</span>
+            <span class="price">R$ 500,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Lente de contato / Facetas dissilicato de lítio</span>
+            <span class="price">R$ 520,00</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ZIRCÔNIA -->
+    <div class="col-md-6 col-lg-4">
+      <div class="price-card">
+        <div class="price-header">Zircônia</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <span>Coroa total zircônia sobre dente</span>
+            <span class="price">R$ 385,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Coroa total zircônia sobre implante</span>
+            <span class="price">R$ 395,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Protocolo cerâmico de zircônia</span>
+            <span class="price">R$ 5.550,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Aplicação de gengiva artificial</span>
+            <span class="price">R$ 110,00</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- METALOCERÂMICA -->
+    <div class="col-md-6 col-lg-4">
+      <div class="price-card">
+        <div class="price-header">Metalocerâmica</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <span>Coroa total metalocerâmica sobre preparo</span>
+            <span class="price">R$ 330,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Coroa total metalocerâmica sobre implante</span>
+            <span class="price">R$ 350,00</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RESINA -->
+    <div class="col-md-6 col-lg-4">
+      <div class="price-card">
+        <div class="price-header">Resina</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <span>Coroa total cerômero</span>
+            <span class="price">R$ 230,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Coroa onlay/inlay cerômero</span>
+            <span class="price">R$ 230,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Coroa provisória</span>
+            <span class="price">R$ 120,00</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PRÓTESE ACRÍLICA -->
+    <div class="col-md-6 col-lg-4">
+      <div class="price-card">
+        <div class="price-header">Prótese Acrílica</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <span>Prótese total simples provisória</span>
+            <span class="price">R$ 370,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Prótese total palato incolor</span>
+            <span class="price">R$ 420,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Prótese total caracterizada</span>
+            <span class="price">R$ 550,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Prótese parcial removível</span>
+            <span class="price">R$ 650,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Prótese parcial removível provisória</span>
+            <span class="price">R$ 280,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Prótese overdenture</span>
+            <span class="price">R$ 850,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Protocolo acrílico c/ estrutura metálica</span>
+            <span class="price">R$ 1.500,00</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- PLACAS -->
+    <div class="col-md-6 col-lg-4">
+      <div class="price-card">
+        <div class="price-header">Placas</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <span>Placa em silicone</span>
+            <span class="price">R$ 130,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Placa em acetato</span>
+            <span class="price">R$ 200,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Placa acrílica prensada</span>
+            <span class="price">R$ 350,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Placa acrílica impressa</span>
+            <span class="price">R$ 360,00</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DEMAIS SERVIÇOS -->
+    <div class="col-md-6 col-lg-4">
+      <div class="price-card">
+        <div class="price-header">Demais Serviços</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <span>Enceramento diagnóstico impresso (elemento)</span>
+            <span class="price">R$ 80,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Núcleo metálico fundido</span>
+            <span class="price">R$ 100,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Restauração metálica fundida</span>
+            <span class="price">R$ 230,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Solda</span>
+            <span class="price">R$ 120,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Conserto prótese removível</span>
+            <span class="price">R$ 150,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Reembasamento de prótese</span>
+            <span class="price">R$ 250,00</span>
+          </li>
+          <li class="list-group-item">
+            <span>Escaneamento para envio de arquivo</span>
+            <span class="price">R$ 300,00</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-section-title">
+      <h3>Fale Conosco</h3>
+      <p>Estamos prontos para atender suas necessidades com excelência e profissionalismo</p>
+    </div>
+    
+    <div class="contact-cards-container">
+      <div class="contact-card">
+        <div class="contact-card-icon">
+          <i class="bi bi-person-circle"></i>
+        </div>
+        <h6>Manuel Pedro</h6>
+        <div class="cro-badge">CRO: MG-TPD-4027</div>
+        <div class="divider"></div>
+        <a href="https://wa.me/5534999602827" target="_blank">
+          <i class="bi bi-whatsapp"></i>
+          (34) 9 9960-2827
+        </a>
+        <div class="contact-info-extra">Disponível para orçamentos</div>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-card-icon">
+          <i class="bi bi-person-circle"></i>
+        </div>
+        <h6>Italo Borges</h6>
+        <div class="cro-badge">CRO/MG: 61.949</div>
+        <div class="divider"></div>
+        <a href="https://wa.me/5534991507907" target="_blank">
+          <i class="bi bi-whatsapp"></i>
+          (34) 9 9150-7907
+        </a>
+        <div class="contact-info-extra">Disponível para orçamentos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contato">
+  <div class="container">
+    <h4>LB Laboratório de Prótese</h4>
+    <p><i class="bi bi-geo-alt"></i> R. José de Alencar, 265 - Uberaba/MG</p>
+    <p>Excelência, estética e confiança</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/5534999602827" class="floating"><i class="bi bi-whatsapp"></i></a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

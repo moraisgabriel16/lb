@@ -1,0 +1,226 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LB Laboratório – Tabela de Preços</title>
+
+  <!-- Fonte LEMONMILK -->
+  <style>
+    @font-face {
+      font-family: 'LEMONMILK';
+      src: url('fonts/LEMONMILK-Regular.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root {
+      --blue-dark: #0b2c4d;
+      --blue-main: #123e6b;
+      --blue-light: #e8f1f8;
+      --accent: #4db6ac;
+      --text-dark: #1f2933;
+      --text-light: #6b7280;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: linear-gradient(180deg, var(--blue-light), #ffffff);
+      color: var(--text-dark);
+      padding: 40px 16px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-main));
+      color: var(--white);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    header img {
+      height: 80px;
+      width: auto;
+    }
+
+    header .title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    header h1 {
+      font-family: 'LEMONMILK', sans-serif;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    header span {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    .content {
+      padding: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+
+    .card {
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      font-family: 'LEMONMILK', sans-serif;
+      font-size: 18px;
+      color: var(--blue-main);
+      margin-bottom: 16px;
+      border-left: 4px solid var(--accent);
+      padding-left: 12px;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px dashed #e5e7eb;
+      font-size: 14px;
+    }
+
+    .item:last-child {
+      border-bottom: none;
+    }
+
+    .price {
+      font-family: 'LEMONMILK', sans-serif;
+      color: var(--blue-dark);
+      white-space: nowrap;
+    }
+
+    footer {
+      background: #f9fafb;
+      padding: 24px 40px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <img src="img/lb.png" alt="LB Laboratório" />
+      <div class="title">
+        <h1>LB Laboratório</h1>
+        <span>Tabela de preços • Qualidade • Precisão • Estética</span>
+      </div>
+    </header>
+
+    <section class="content">
+
+      <div class="card">
+        <h2>CERÂMICA PURA</h2>
+        <div class="item"><span>Coroa total cerâmica pura (EMAX) injetada</span><span class="price">R$ 450,00</span></div>
+        <div class="item"><span>Coroa total cerâmica pura (EMAX) fresada</span><span class="price">R$ 500,00</span></div>
+        <div class="item"><span>Coroa onlay/inlay cerâmica pura (EMAX) fresada</span><span class="price">R$ 500,00</span></div>
+        <div class="item"><span>Lente de contato / facetas dissilicato de lítio</span><span class="price">R$ 520,00</span></div>
+      </div>
+
+      <div class="card">
+        <h2>ZIRCÔNIA</h2>
+        <div class="item"><span>Coroa total zircônia sobre dente</span><span class="price">R$ 385,00</span></div>
+        <div class="item"><span>Coroa total zircônia sobre implante</span><span class="price">R$ 395,00</span></div>
+        <div class="item"><span>Protocolo cerâmico de zircônia</span><span class="price">R$ 5.550,00</span></div>
+        <div class="item"><span>Aplicação de gengiva artificial</span><span class="price">R$ 110,00</span></div>
+      </div>
+
+      <div class="card">
+        <h2>METALOCERÂMICA</h2>
+        <div class="item"><span>Coroa total metalocerâmica sobre preparo</span><span class="price">R$ 330,00</span></div>
+        <div class="item"><span>Coroa total metalocerâmica sobre implante</span><span class="price">R$ 350,00</span></div>
+      </div>
+
+      <div class="card">
+        <h2>RESINA</h2>
+        <div class="item"><span>Coroa total cerômero</span><span class="price">R$ 230,00</span></div>
+        <div class="item"><span>Coroa onlay/inlay cerômero</span><span class="price">R$ 230,00</span></div>
+        <div class="item"><span>Coroa provisória</span><span class="price">R$ 120,00</span></div>
+      </div>
+
+      <div class="card">
+        <h2>PRÓTESE ACRÍLICA</h2>
+        <div class="item"><span>Prótese total simples provisória</span><span class="price">R$ 370,00</span></div>
+        <div class="item"><span>Prótese total palato incolor</span><span class="price">R$ 420,00</span></div>
+        <div class="item"><span>Prótese total caracterizada</span><span class="price">R$ 550,00</span></div>
+        <div class="item"><span>Prótese parcial removível</span><span class="price">R$ 650,00</span></div>
+        <div class="item"><span>Prótese parcial removível provisória</span><span class="price">R$ 280,00</span></div>
+        <div class="item"><span>Prótese overdenture</span><span class="price">R$ 850,00</span></div>
+        <div class="item"><span>Prótese protocolo acrílico c/ estrutura metálica</span><span class="price">R$ 1.500,00</span></div>
+      </div>
+
+      <div class="card">
+        <h2>PLACAS</h2>
+        <div class="item"><span>Placa em silicone</span><span class="price">R$ 130,00</span></div>
+        <div class="item"><span>Placa em acetato</span><span class="price">R$ 200,00</span></div>
+        <div class="item"><span>Placa acrílica prensada</span><span class="price">R$ 350,00</span></div>
+        <div class="item"><span>Placa acrílica impressa</span><span class="price">R$ 360,00</span></div>
+      </div>
+
+      <div class="card">
+        <h2>DEMAIS SERVIÇOS</h2>
+        <div class="item"><span>Enceramento diagnóstico impresso (elemento)</span><span class="price">R$ 80,00</span></div>
+        <div class="item"><span>Núcleo metálico fundido</span><span class="price">R$ 100,00</span></div>
+        <div class="item"><span>Restauração metálica fundida</span><span class="price">R$ 230,00</span></div>
+        <div class="item"><span>Solda</span><span class="price">R$ 120,00</span></div>
+        <div class="item"><span>Conserto de prótese removível</span><span class="price">R$ 150,00</span></div>
+        <div class="item"><span>Reembasamento de prótese</span><span class="price">R$ 250,00</span></div>
+        <div class="item"><span>Escaneamento para envio do arquivo</span><span class="price">R$ 300,00</span></div>
+      </div>
+
+    </section>
+
+    <footer>
+      Material comercial • Valores sujeitos a alteração • LB Laboratório
+    </footer>
+
+  </div>
+
+</body>
+</html>
+```
